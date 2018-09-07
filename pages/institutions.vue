@@ -25,8 +25,8 @@
   </v-toolbar>
     <v-card>
       <GmapMap
-            :center="{lat:10, lng:10}"
-            :zoom="7"
+            :center="{lat:38, lng:-100}"
+            :zoom="4"
             map-type-id="terrain"
             style="height: 300px "
           >
@@ -35,8 +35,10 @@
               v-for="(m, index) in markers"
               :position="m.position"
               :clickable="true"
-              :draggable="true"
+              :draggable="false"
               @click="center=m.position"
+              :title="m.name"
+              :icon.sync="m.icon"
             />
           </GmapMap>
         <v-list three-line>
@@ -124,10 +126,19 @@
         ],
         markers: [
           {
-            position: { lng: 10.2, lat: 10 }
+            position: { lat: 38, lng: -90 },
+            name: 'stl',
+            icon: {url: 'https://cdn3.iconfinder.com/data/icons/banking-toolbar/512/xxx047-512.png'}
           },
           {
-            position: { lng: 11.2, lat: 11 }
+            position: { lat: 30, lng: -110 },
+            name: 'over there',
+            icon: {url: 'https://cdn3.iconfinder.com/data/icons/banking-toolbar/512/xxx047-512.png'}
+          },
+          {
+            position: { lat: 42, lng: -88 },
+            name: 'over the other way',
+            icon: {url: 'https://cdn3.iconfinder.com/data/icons/banking-toolbar/512/xxx047-512.png'}
           }
         ],
         page: 1,
