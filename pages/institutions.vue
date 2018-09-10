@@ -30,17 +30,21 @@
             map-type-id="terrain"
             style="height: 300px "
           >
+            <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
+              {{infoContent}}
+            </gmap-info-window>
             <GmapMarker
               :key="index"
               v-for="(m, index) in markers"
               :position="m.position"
               :clickable="true"
               :draggable="false"
-              @click="center=m.position"
+              @click="toggleInfoWindow(m,index)"
               :title="m.name"
               :icon.sync="m.icon"
             />
           </GmapMap>
+
         <v-list three-line>
           <template v-for="(item, index) in items">
             <v-subheader
@@ -128,19 +132,31 @@
           {
             position: { lat: 38, lng: -90 },
             name: 'stl',
-            icon: {url: 'https://cdn3.iconfinder.com/data/icons/banking-toolbar/512/xxx047-512.png'}
+            icon: {url: '/location.png'},
+            infoText: 'Marker 1'
           },
           {
             position: { lat: 30, lng: -110 },
             name: 'over there',
-            icon: {url: 'https://cdn3.iconfinder.com/data/icons/banking-toolbar/512/xxx047-512.png'}
+            icon: {url: '/location.png'},
+            infoText: 'Marker 2'
           },
           {
             position: { lat: 42, lng: -88 },
             name: 'over the other way',
-            icon: {url: 'https://cdn3.iconfinder.com/data/icons/banking-toolbar/512/xxx047-512.png'}
+            icon: {url: '/location.png'},
+            infoText: 'Marker 3'
           }
         ],
+        infoContent: 'fhggfhgfdhgfdh',
+        infoWindowPos: { lat: 30, lng: -110 },
+        infoWinOpen: false,
+        infoOptions: {
+          pixelOffset: {
+            width: 0,
+            height: -35
+          }
+        },
         page: 1,
         loading: false,
         search: null,
@@ -223,6 +239,17 @@
           })
           this.loading = false
         }, 500)
+      },
+      toggleInfoWindow: function (marker, idx) {
+        this.infoWindowPos = marker.position
+        this.infoContent = marker.infoText
+        // check if its the same marker that was selected if yes toggle
+        if (this.currentMidx === idx) {
+          this.infoWinOpen = !this.infoWinOpen
+        } else {
+          this.infoWinOpen = true
+          this.currentMidx = idx
+        }
       }
     }
   }
