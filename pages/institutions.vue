@@ -24,6 +24,7 @@
     </v-btn>
   </v-toolbar>
     <v-card>
+      {{data.length}}
       <GmapMap
             :center="{lat:38, lng:-100}"
             :zoom="4"
@@ -35,13 +36,13 @@
             </gmap-info-window>
             <GmapMarker
               :key="index"
-              v-for="(m, index) in markers"
+              v-for="(m, index) in data"
               :position="m.position"
               :clickable="true"
               :draggable="false"
               @click="toggleInfoWindow(m,index)"
-              :title="m.name"
-              :icon.sync="m.icon"
+              :title="m.Title"
+              :icon.sync="icon"
             />
           </GmapMap>
 
@@ -134,22 +135,20 @@
           {
             position: { lat: 38, lng: -90 },
             name: 'stl',
-            icon: {url: '/location.png'},
             infoText: 'Marker 1'
           },
           {
             position: { lat: 30, lng: -110 },
             name: 'over there',
-            icon: {url: '/location.png'},
             infoText: 'Marker 2'
           },
           {
             position: { lat: 42, lng: -88 },
             name: 'over the other way',
-            icon: {url: '/location.png'},
             infoText: 'Marker 3'
           }
         ],
+        icon: {url: '/location.png'},
         infoContent: 'fhggfhgfdhgfdh',
         infoWindowPos: { lat: 30, lng: -110 },
         infoWinOpen: false,
@@ -247,7 +246,7 @@
       },
       toggleInfoWindow: function (marker, idx) {
         this.infoWindowPos = marker.position
-        this.infoContent = marker.infoText
+        this.infoContent = marker.Title
         // check if its the same marker that was selected if yes toggle
         if (this.currentMidx === idx) {
           this.infoWinOpen = !this.infoWinOpen
@@ -258,6 +257,7 @@
       },
       getPoints: function () {
         let path = 'http://csv.mohistory.org/json/institutions'
+        let self = this
         fetch(path)
           .then(function (response) {
             return response.json()
