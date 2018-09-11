@@ -92,9 +92,11 @@
 </template>
 
 <script>
+  import 'isomorphic-fetch'
   export default {
     data () {
       return {
+        data: {},
         items: [
           { header: 'Participating Institutions' },
           {
@@ -229,6 +231,9 @@
         val && val !== this.select && this.querySelections(val)
       }
     },
+    created: function () {
+      this.getPoints()
+    },
     methods: {
       querySelections (v) {
         this.loading = true
@@ -250,6 +255,20 @@
           this.infoWinOpen = true
           this.currentMidx = idx
         }
+      },
+      getPoints: function () {
+        let path = 'http://csv.mohistory.org/json/institutions'
+        fetch(path)
+          .then(function (response) {
+            return response.json()
+          })
+          .then(function (myJson) {
+            self.data = myJson.data
+            console.log(self.data)
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
       }
     }
   }
