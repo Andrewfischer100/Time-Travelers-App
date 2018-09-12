@@ -17,6 +17,7 @@
     "isomorphic-fetch": "^2.2.1",
     "nuxt": "^1.4.2",
     "vue-formio": "^3.0.0",
+    "vue-social-sharing": "^2.3.3",
     "vue2-google-maps": "^0.7.10",
     "vuetify": "^1.0.0"
   },

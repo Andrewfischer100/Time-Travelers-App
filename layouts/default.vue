@@ -54,9 +54,8 @@
       tile
     >
       <v-card-text>
-      <p class="title ml-5">Time Travelers</p>
+      <p class="title ml-5" center style="max-width: 400px; margin: auto;">Time Travelers</p>
         <p class="subheading ml-5">Your passport to a variety of Membership Benefits at Historic Sites Across the U.S.</p>
-
         <v-spacer></v-spacer>
       </v-card-text>
       <v-card-actions class="black white--text justify-center">
