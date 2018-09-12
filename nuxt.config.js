@@ -14,12 +14,13 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' },
-      { rel: 'stylesheet', href: 'href="https://unpkg.com/formiojs@latest/dist/formio.full.min.css' },
-      { rel: 'stylesheet', href: 'href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' }
+      { rel: 'stylesheet', href: 'https://unpkg.com/formiojs@latest/dist/formio.full.min.css' },
+      { rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' }
     ]
   },
   plugins: ['~/plugins/vuetify.js',
-    '~plugins/vue2-google-maps.js'],
+    '~/plugins/vue2-google-maps.js',
+    '~/plugins/vue-social-sharing.js'],
   css: [
     '~/assets/style/app.styl'
   ],
@@ -32,7 +33,7 @@ module.exports = {
   */
   build: {
     vendor: [
-      '~/plugins/vuetify.js', 'vue2-google-maps'
+      '~/plugins/vuetify.js', 'vue2-google-maps', 'vue-social-sharing'
     ],
     extractCSS: true,
     /*

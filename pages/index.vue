@@ -16,13 +16,59 @@
           <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>
+        <section class="container">
+          <div>
+            <social-sharing url="http://timetravelers.mohistory.org/"
+                      title="Time Travelers | Membership network for historical museums, sites, and societies throughout the United States"
+                      description="The Missouri Historical Society created the program in 1998 so that members of historical institutions could receive exclusive benefits and privileges at museums and historical sites nationwide. Currently, the Time Travelers program includes over 300 organizations in more than 40 states across the country. "
+                      quote="Your passport to a variety of Membership Benefits at Historic Sites Across the U.S"
+                      hashtags="timetravelers,missourihistorymuseum,mohistory"
+                      twitter-user="mohistorymuseum"
+                      inline-template>
+              <div>
+                  <network network="email">
+                      <i class="fa fa-envelope fa-2x pr-3"></i>
+                  </network>
+                  <network network="sms">
+                    <i class="fa fa-commenting-o fa-2x pr-3"></i>
+                  </network>
+                  <network network="facebook">
+                    <i class="fa fa-facebook fa-2x pr-3"></i>
+                  </network>
+                  <network network="twitter">
+                    <i class="fa fa-twitter fa-2x pr-3"></i>
+                  </network>
+                  <network network="pinterest">
+                    <i class="fa fa-pinterest fa-2x pr-3"></i>
+                  </network>
+                  <network network="googleplus">
+                    <i class="fa fa-google-plus fa-2x pr-3"></i>
+                  </network>
+                  <network network="linkedin">
+                    <i class="fa fa-linkedin fa-2x pr-3"></i>
+                  </network>
+              </div>
+            </social-sharing>
+          </div>
+        </section>
+
+        
     </v-flex>
   </v-layout>
 </template>
+
+<script>
+// Empty
+</script>
 
 <style lang="stylus">
 .responsive {
     width: 100%;
     height: auto;
+}
+.pointer {cursor: pointer;}
+
+material-icons:hover { 
+    background-color: yellow;
 }
 </style>
