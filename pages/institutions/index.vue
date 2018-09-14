@@ -72,9 +72,11 @@
               avatar
               @click=""
             >
-              <v-list-tile-avatar v-if="item.Image_Thumb[0]" size="60" tile class="pr-3" >
-                <img :src="item.Image_Thumb[0]">
-              </v-list-tile-avatar>
+              <nuxt-link :to="'/institutions/' + item.id">
+                <v-list-tile-avatar v-if="item.Image_Thumb[0]" size="60" tile class="pr-3" >
+                  <img :src="item.Image_Thumb[0]">
+                </v-list-tile-avatar>
+              </nuxt-link>
 
               <v-list-tile-content>
                 <nuxt-link :to="'/institutions/' + item.id">
