@@ -18,10 +18,14 @@
       hide-details
       label="Where are you traveling?"
       solo-inverted
+      autofocus
     ></v-autocomplete>
     <!--<v-btn icon>
       <v-icon>more_vert</v-icon>
     </v-btn>-->
+    <v-btn icon v-if="select">
+      <v-icon @click="clearSearch()">clear</v-icon>
+    </v-btn>
   </v-toolbar>
     <v-card>
       <GmapMap
@@ -29,9 +33,13 @@
             :zoom="zoom"
             map-type-id="terrain"
             style="height: 300px "
+            :options="mapStyle"
           >
             <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
-              {{infoContent}}
+              <h4><nuxt-link :to="'/institutions/' + infoContent.id">{{infoContent.Title}}</nuxt-link></h4>
+              <p>{{infoContent.Address_Street}}</p>
+              <p>{{infoContent.Benefits}}</p>
+              <p><a :href="infoContent.URL">{{infoContent.URL}}</a></p>
             </gmap-info-window>
             <GmapMarker
               :key="index"
@@ -69,7 +77,9 @@
               </v-list-tile-avatar>
 
               <v-list-tile-content>
-                <v-list-tile-title v-html="item.Title"></v-list-tile-title>
+                <nuxt-link :to="'/institutions/' + item.id">
+                  <v-list-tile-title v-html="item.Title"></v-list-tile-title>
+                </nuxt-link>
                 <v-list-tile-sub-title v-html="item.Address_Street"></v-list-tile-sub-title>
                 <a :href="item.URL"><v-list-tile-sub-title v-html="item.URL"></v-list-tile-sub-title></a>
               </v-list-tile-content>
@@ -98,7 +108,13 @@
         fullData: {},
         zoom: 4,
         icon: {url: '/location.png'},
-        infoContent: 'place holder text',
+        infoContent: {
+          id: 1354,
+          Address_Street: '200 South Second Street Clarksville, TN 37040',
+          Benefits: 'placeholder',
+          URL: 'http://www.customshousemuseum.org',
+          Title: 'Customs House Museum & Cultural Center'
+        },
         infoWindowPos: { lat: 30, lng: -110 },
         infoWinOpen: false,
         infoOptions: {
@@ -123,7 +139,6 @@
           'District of Columbia',
           'Florida',
           'Georgia',
-          'Guam',
           'Hawaii',
           'Idaho',
           'Illinois',
@@ -133,7 +148,6 @@
           'Kentucky',
           'Louisiana',
           'Maine',
-          'Marshall Islands',
           'Maryland',
           'Massachusetts',
           'Michigan',
@@ -152,7 +166,6 @@
           'Ohio',
           'Oklahoma',
           'Oregon',
-          'Palau',
           'Pennsylvania',
           'Puerto Rico',
           'Rhode Island',
@@ -162,7 +175,6 @@
           'Texas',
           'Utah',
           'Vermont',
-          'Virgin Island',
           'Virginia',
           'Washington',
           'West Virginia',
@@ -181,7 +193,7 @@
           'Delaware': {lat: 39.31852, lng: -75.507141},
           'District of Columbia': {lat: 38.89743, lng: -77.026817},
           'Florida': {lat: 27.76627, lng: -81.686783},
-          'Georgia: ': {lat: 33.04061, lng: -83.643074},
+          'Georgia': {lat: 33.04061, lng: -83.643074},
           'Hawaii': {lat: 21.09431, lng: -157.498337},
           'Idaho': {lat: 44.24045, lng: -114.478828},
           'Illinois': {lat: 40.34945, lng: -88.986137},
@@ -222,13 +234,148 @@
           'West Virginia': {lat: 38.49122, lng: -80.954453},
           'Wisconsin': {lat: 44.26854, lng: -89.616508},
           'Wyoming': {lat: 42.75596, lng: -107.302490}
+        },
+        mapStyle: {
+          styles:
+            [
+              {
+                'featureType': 'administrative',
+                'elementType': 'all',
+                'stylers': [
+                  {
+                    'saturation': '-100'
+                  }
+                ]
+              },
+              {
+                'featureType': 'administrative.province',
+                'elementType': 'all',
+                'stylers': [
+                  {
+                    'visibility': 'on'
+                  },
+                  {
+                    'saturation': 100
+                  }
+                ]
+              },
+              {
+                'featureType': 'landscape',
+                'elementType': 'all',
+                'stylers': [
+                  {
+                    'saturation': -100
+                  },
+                  {
+                    'lightness': 65
+                  },
+                  {
+                    'visibility': 'on'
+                  }
+                ]
+              },
+              {
+                'featureType': 'poi',
+                'elementType': 'all',
+                'stylers': [
+                  {
+                    'saturation': -100
+                  },
+                  {
+                    'lightness': '50'
+                  },
+                  {
+                    'visibility': 'simplified'
+                  }
+                ]
+              },
+              {
+                'featureType': 'road',
+                'elementType': 'all',
+                'stylers': [
+                  {
+                    'saturation': '-100'
+                  }
+                ]
+              },
+              {
+                'featureType': 'road.highway',
+                'elementType': 'all',
+                'stylers': [
+                  {
+                    'visibility': 'simplified'
+                  }
+                ]
+              },
+              {
+                'featureType': 'road.arterial',
+                'elementType': 'all',
+                'stylers': [
+                  {
+                    'lightness': '30'
+                  }
+                ]
+              },
+              {
+                'featureType': 'road.local',
+                'elementType': 'all',
+                'stylers': [
+                  {
+                    'lightness': '40'
+                  }
+                ]
+              },
+              {
+                'featureType': 'transit',
+                'elementType': 'all',
+                'stylers': [
+                  {
+                    'saturation': -100
+                  },
+                  {
+                    'visibility': 'simplified'
+                  }
+                ]
+              },
+              {
+                'featureType': 'water',
+                'elementType': 'geometry',
+                'stylers': [
+                  {
+                    'hue': '#ffff00'
+                  },
+                  {
+                    'lightness': -25
+                  },
+                  {
+                    'saturation': -97
+                  }
+                ]
+              },
+              {
+                'featureType': 'water',
+                'elementType': 'labels',
+                'stylers': [
+                  {
+                    'lightness': -25
+                  },
+                  {
+                    'saturation': -100
+                  }
+                ]
+              }
+            ]
         }
       }
     },
     watch: {
       search (val) {
         val && val !== this.select && this.querySelections(val)
-        this.filterData()
+      },
+      select: function (val) {
+        if (this.states.includes(val)) {
+          this.filterData()
+        }
       }
     },
     created: function () {
@@ -247,7 +394,7 @@
       },
       toggleInfoWindow: function (marker, idx) {
         this.infoWindowPos = marker.position
-        this.infoContent = marker.Title
+        this.infoContent = marker
         // check if its the same marker that was selected if yes toggle
         if (this.currentMidx === idx) {
           this.infoWinOpen = !this.infoWinOpen
@@ -258,6 +405,7 @@
       },
       filterData: function () {
         let self = this
+        console.log(this.select)
         self.data = []
         for (let i = 0; i < self.fullData.length; i++) {
           if (self.fullData[i].Address_State === self.select) {
@@ -282,7 +430,17 @@
           .catch(function (error) {
             console.log(error)
           })
+      },
+      clearSearch: function () {
+        this.select = null
+        this.center = { lat: 38, lng: -100 }
+        this.zoom = 4
+        this.data = this.fullData
       }
     }
   }
 </script>
+
+<style>
+  .water {background-color:red;}
+</style>
