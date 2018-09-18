@@ -1,18 +1,14 @@
 
-
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <div class="text-xs-center">
-      </div>
-      <v-card class="elevation-0">
+  <v-layout row>
+    <v-flex xs12 sm10 offset-sm1>
+      <v-card class="elevation-2">
         <div class="mb-0 text-xs-center">  
-          <img src="/museum-exterior-crop.jpg" alt="Time Travelers" class="responsive elevation-7">
+          <iframe class="mt-5" src="http://admin.mohistory.org/forms/tt/contact.html">
+            <p>Your browser does not support iframes.</p>
+          </iframe>
           </div>
-        <v-card-title class="title font-weight-black">WHAT IS TIME TRAVELERS?</v-card-title>
         <v-card-text>
-          <p>Time Travelers is a free reciprocal membership network for historical museums, sites, and societies throughout the United States. The Missouri Historical Society created the program in 1998 so that members of historical institutions could receive exclusive benefits and privileges at museums and historical sites nationwide.</p>
-          <p>Currently, the Time Travelers program includes over 300 organizations in more than 40 states across the country. Members of these organizations can receive a variety of exclusive benefits and privileges, such as free admission, gift shop discounts, and much, much more. Time Travelers is a museum reciprocal program and if you are interested in receiving these benefits you must join one of the museums listed on this site.</p>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -22,20 +18,38 @@
   </v-layout>
 </template>
 
+
 <style lang="stylus">
 .responsive {
     width: 100%;
     height: auto;
 }
+iframe {
+    width: 100%;
+    height: 900px;
+    border-width: 0px;
+
+}
+iframe:focus { 
+    outline: none;
+}
+
+iframe[seamless] { 
+    display: block;
+}
 </style>
 
+
 <!-- webcomponent and custom framwork -->
-<!-- 
+
+<!--
+
 <template>
 <div id="formio"></div>
 
 </templete>
-
+<link rel="stylesheet" href="https://unpkg.com/formiojs@latest/dist/formio.full.min.css">
+<script src="https://unpkg.com/formiojs@latest/dist/formio.full.min.js"></script>
 <script type="text/javascript">
   window.onload = function () {
     Formio.createForm(document.getElementById('formio'), 'https://mhs.form.io/conacttt')
@@ -78,8 +92,8 @@
 
 
 <!-- Vue JS portal framework-->
-<!-- 
 
+<!-- 
 <template>
   <formio :src="formUrl" v-on:submit="onSubmitMethod" />
 </template>

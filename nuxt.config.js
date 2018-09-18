@@ -4,18 +4,16 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'timetravelers-app',
-    script: [{ src: 'https://unpkg.com/formiojs@latest/dist/formio.full.min.js' }],
+    title: 'Time Travelers | A membership network for 300 plus historical museums, sites, and societies throughout the United States',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt.js + Vuetify.js project' }
+      { hid: 'description', name: 'Time Travelers is a free reciprocal membership network for 300 plus historical museums, sites, and societies throughout the United States. The Missouri Historical Society created the program in 1998 so that members of historical institutions could receive exclusive benefits and privileges at museums and historical sites nationwide.', content: 'Currently, the Time Travelers program includes over 300 organizations in more than 40 states across the country.' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' },
-      { rel: 'stylesheet', href: 'https://unpkg.com/formiojs@latest/dist/formio.full.min.css' },
-      { rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' }
+      { rel: 'stylesheet', href: 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' }
     ]
   },
   plugins: ['~/plugins/vuetify.js',

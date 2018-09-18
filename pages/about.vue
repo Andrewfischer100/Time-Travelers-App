@@ -13,8 +13,6 @@
        </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn flat left color="orange">Share</v-btn>
-          <v-btn flat left color="orange">Explore</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>
