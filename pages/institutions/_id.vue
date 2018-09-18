@@ -36,7 +36,7 @@
 
           </v-layout>
 
-        <p class="pa-3">{{data.Body}}</p>
+        <p class="pa-3" v-html="data.Body"></p>
 
         <v-list two-line>
           <v-list-tile @click="">
