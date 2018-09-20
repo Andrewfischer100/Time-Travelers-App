@@ -1,5 +1,8 @@
 
+const axios = require('axios')
+
 module.exports = {
+  debug: true,
   /*
   ** Headers of the page
   */
@@ -56,6 +59,34 @@ module.exports = {
           }
         })
       }
+    }
+  },
+  /*
+  generate: {
+    routes: function (callback) {
+      axios.get('http://csv.mohistory.org/json/institutions')
+        .then((res) => {
+          console.log(res)
+          var routes = res.data.id((institution) => {
+            return '/institutions/' + institution.id
+          })
+          callback(null, routes)
+        })
+        .catch(callback)
+    }
+  },
+  */
+  generate: {
+    routes: function (callback) {
+      axios.get('http://csv.mohistory.org/json/institutions')
+        .then(axios.spread(function (res) {
+          let routes = res.data.map((item) => {
+            return '/institutions/' + item.id
+          })
+          callback(null, routes)
+        }), function (err) {
+          console.log(err)
+        })
     }
   }
 }

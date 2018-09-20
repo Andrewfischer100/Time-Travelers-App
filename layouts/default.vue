@@ -60,7 +60,7 @@
         <img src="/logo.png" alt="Time Travelers" style="width:186px;height:100px;" class="ml-5">
         </nuxt-link>
         <p class="subheading">Your passport to a variety of Membership Benefits at Historic Sites Across the U.S.<br>
-        <v-icon dark class="pr-2 ml-5">picture_as_pdf</v-icon><a class="subheading" href="#" target="_blank" type="media_type">View Participation institutions</a></p>
+        <v-icon dark class="pr-2 ml-5">picture_as_pdf</v-icon><a class="subheading" href="http://images.mohistory.org/legacy/mohistory/July2017.pdf" target="_blank" type="media_type">View Participation institutions</a></p>
           <address>
             Lindell and Debaliviere in Forest Park St. Louis, MO 63112-0040.<br> 
             <a href="mailto:timetravelers@mohistory.org?Subject=Time%20Travelers" target="_top">timetravelers@mohistory.org</a><br>

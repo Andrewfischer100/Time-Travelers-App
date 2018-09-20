@@ -3,10 +3,17 @@
     <v-flex xs12 sm8 md6>
       <div class="text-xs-center">
       </div>
-      <v-card class="elevation-0">
-        <div class="mb-0 text-xs-center">  
-          <img src="/museum-exterior-crop.jpg" alt="Time Travelers" class="responsive elevation-7">
-          </div>
+      <v-card class="elevation" >
+        <v-carousel hide-delimiters class="elevation-7">
+        <nuxt-link 
+            :to="'/institutions/' + item.id" 
+            v-for="(item,i) in items"
+            :key="i">
+          <v-carousel-item
+            :src="item.src"
+          ></v-carousel-item>
+        </nuxt-link> 
+        </v-carousel>
         <v-card-title class="title font-weight-black">WHAT IS TIME TRAVELERS?</v-card-title>
         <v-card-text>
           <p>Time Travelers is a free reciprocal membership network for historical museums, sites, and societies throughout the United States. The Missouri Historical Society created the program in 1998 so that members of historical institutions could receive exclusive benefits and privileges at museums and historical sites nationwide.</p>
@@ -58,7 +65,27 @@
 </template>
 
 <script>
-// Empty
+  export default {
+    data () {
+      return {
+        items: [
+          {
+            src: '/museum-exterior-crop.jpg'
+          },
+          {
+            src: 'http://images.mohistory.org/loris/webimages/files/tt/3186.jpg/full/full/0/default.jpg',
+            id: 1216
+          },
+          {
+            src: 'http://images.mohistory.org/loris/webimages/files/tt/3186.jpg/full/full/0/default.jpg'
+          },
+          {
+            src: 'http://images.mohistory.org/loris/webimages/files/tt/3186.jpg/full/full/0/default.jpg'
+          }
+        ]
+      }
+    }
+  }
 </script>
 
 <style lang="stylus">

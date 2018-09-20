@@ -8,11 +8,6 @@
             <p>Your browser does not support iframes.</p>
           </iframe>
           </div>
-        <v-card-text>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-        </v-card-actions>
       </v-card>
     </v-flex>
   </v-layout>
@@ -26,7 +21,7 @@
 }
 iframe {
     width: 100%;
-    height: 900px;
+    height: 800px;
     border-width: 0px;
 
 }
