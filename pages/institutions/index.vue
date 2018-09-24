@@ -69,16 +69,17 @@
 
             <v-list-tile
               :key="item.id"
-              avatar
               @click=""
+              wrap
+            
             >
               <nuxt-link :to="'/institutions/' + item.id">
-                <v-list-tile-avatar v-if="item.Image_Thumb[0]" size="60" tile class="pr-3" >
-                  <img :src="item.Image_Thumb[0]">
-                </v-list-tile-avatar>
+              <v-responsive v-if="item.Image_Thumb[0]">
+                <img :src="item.Image_Thumb[0]" :aspect-ratio="16/9" width="90px">
+              </v-responsive>
               </nuxt-link>
 
-              <v-list-tile-content>
+              <v-list-tile-content  class="pl-3">
                 <nuxt-link :to="'/institutions/' + item.id">
                   <v-list-tile-title v-html="item.Title"></v-list-tile-title>
                 </nuxt-link>

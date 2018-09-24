@@ -125,7 +125,8 @@
   export default {
     validate ({ params }) {
     // Must be a number
-      return /^\d+$/.test(params.id)
+    //  return /^\d+$/.test(params.id)
+      return true
     },
     data () {
       return {
