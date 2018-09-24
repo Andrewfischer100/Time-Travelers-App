@@ -23,7 +23,8 @@ module.exports = {
     '~/plugins/vue2-google-maps.js',
     '~/plugins/vue-social-sharing.js'],
   css: [
-    '~/assets/style/app.styl'
+    '~/assets/style/app.styl',
+    '~/assets/style/main.css'
   ],
   /*
   ** Customize the progress bar color
@@ -79,14 +80,13 @@ module.exports = {
   generate: {
     routes: function (callback) {
       axios.get('http://csv.mohistory.org/json/institutions')
-        .then(axios.spread(function (res) {
-          let routes = res.data.map((item) => {
-            return '/institutions/' + item.id
+        .then((res) => {
+          var routes = res.data.data.map((place) => {
+            return '/institutions/' + place.id
           })
           callback(null, routes)
-        }), function (err) {
-          console.log(err)
         })
+        .catch(callback)
     }
   }
 }
