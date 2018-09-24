@@ -33,11 +33,15 @@
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-      <v-btn icon class="white--text hidden-sm-and-down" href="/search/"><v-icon>search</v-icon></v-btn>
-      <v-btn flat class="white--text hidden-sm-and-down" href="/">Home</v-btn>
-      <v-btn flat class="white--text hidden-sm-and-down" href="/about/">About the Program</v-btn>
-      <v-btn flat class="white--text hidden-sm-and-down" href="/contact/">Contact</v-btn>
-      <v-btn flat class="white--text hidden-sm-and-down" href="/institutions/">Institutions</v-btn>
+      <!-- 
+        <nuxt-link :to="'/search/'">
+          <v-btn icon class="white--text hidden-sm-and-down"><v-icon>search</v-icon></v-btn>
+        </nuxt-link>
+        -->
+      <v-btn flat class="white--text hidden-sm-and-down" :to="'/'" >Home</v-btn>
+      <v-btn flat class="white--text hidden-sm-and-down" :to="'/about/'">About the Program</v-btn>
+      <v-btn flat class="white--text hidden-sm-and-down" :to="'/contact/'">Contact</v-btn>
+      <v-btn flat class="white--text hidden-sm-and-down" :to="'/institutions/'">Institutions</v-btn>
     </v-toolbar-items>
     </v-toolbar>
     <v-content>
