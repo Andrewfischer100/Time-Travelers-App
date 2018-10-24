@@ -1,9 +1,7 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <div class="text-xs-center">
-      </div>
-      <v-card class="elevation" >
+  <v-layout row>
+    <v-flex xs12 sm10 offset-sm1>
+      <v-card class="elevation-0" >
         <v-carousel hide-delimiters class="elevation-7">
         <nuxt-link 
             :to="'/institutions/' + item.id" 
@@ -12,6 +10,11 @@
           <v-carousel-item
             :src="item.src"
           ></v-carousel-item>
+          <!--
+          <v-responsive v-if="item.Image_Thumb[0]">
+            <img :src="item.Image_Thumb[0]" :aspect-ratio="16/9" width="90px">
+          </v-responsive>
+          -->
         </nuxt-link> 
         </v-carousel>
         <v-card-title class="title font-weight-black">WHAT IS TIME TRAVELERS?</v-card-title>
@@ -75,12 +78,6 @@
           {
             src: 'http://images.mohistory.org/loris/webimages/files/tt/3186.jpg/full/full/0/default.jpg',
             id: 1216
-          },
-          {
-            src: 'http://images.mohistory.org/loris/webimages/files/tt/3186.jpg/full/full/0/default.jpg'
-          },
-          {
-            src: 'http://images.mohistory.org/loris/webimages/files/tt/3186.jpg/full/full/0/default.jpg'
           }
         ]
       }
@@ -97,5 +94,8 @@
 
 material-icons:hover { 
     background-color: yellow;
+}
+.v-carousel {
+  height: 300px;
 }
 </style>

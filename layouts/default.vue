@@ -5,8 +5,9 @@
       :clipped="clipped"
       v-model="drawer"
       fixed
-      stateless
       app
+      width="250"
+      disable-resize-watcher
     >
       <v-list>
         <v-list-tile
@@ -25,10 +26,10 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar fixed app :clipped-left="clipped" height="110" class="black">
+    <v-toolbar fixed app :clipped-left="clipped" height="70" class="black">
       <v-toolbar-side-icon large class="hidden-md-and-up white--text" @click="drawer = !drawer"></v-toolbar-side-icon>
       <nuxt-link :to="'/'">
-      <img src="/logo.png" alt="Time Travelers" style="width:186px;height:100px;" class="ml-5">
+      <img src="/logo.png" alt="Time Travelers" style="width:auto; height:80px;" class="ml-5 pt-2 pb-2">
       </nuxt-link>
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
@@ -38,7 +39,7 @@
           <v-btn icon class="white--text hidden-sm-and-down"><v-icon>search</v-icon></v-btn>
         </nuxt-link>
         -->
-      <v-btn flat class="white--text hidden-sm-and-down" :to="'/'" >Home</v-btn>
+      <v-btn flat class="white--text hidden-sm-and-down" :to="'/'">Home</v-btn>
       <v-btn flat class="white--text hidden-sm-and-down" :to="'/about/'">About the Program</v-btn>
       <v-btn flat class="white--text hidden-sm-and-down" :to="'/contact/'">Contact</v-btn>
       <v-btn flat class="white--text hidden-sm-and-down" :to="'/institutions/'">Institutions</v-btn>
@@ -64,7 +65,7 @@
         <img src="/logo.png" alt="Time Travelers" style="width:186px;height:100px;" class="ml-5">
         </nuxt-link>
         <p class="subheading">Your passport to a variety of Membership Benefits at Historic Sites Across the U.S.<br>
-        <v-icon dark class="pr-2 ml-5">picture_as_pdf</v-icon><a class="subheading" href="http://images.mohistory.org/legacy/mohistory/July2017.pdf" target="_blank" type="media_type">View Participation institutions</a></p>
+        <v-icon dark class="pr-2 ml-5">picture_as_pdf</v-icon><a class="subheading" href="https://csv.mohistory.org/static/pdf/institutions.pdf" target="_blank" type="media_type">View Participating institutions</a></p>
           <address>
             Lindell and Debaliviere in Forest Park St. Louis, MO 63112-0040.<br> 
             <a href="mailto:timetravelers@mohistory.org?Subject=Time%20Travelers" target="_top">timetravelers@mohistory.org</a><br>
@@ -72,7 +73,7 @@
           </address>
         
       </v-card-text>
-      <v-card-actions class="black white--text justify-center">&copy;2018 <strong>Missouri Historical Society</strong>
+      <v-card-actions class="black white--text justify-center">&copy;2018 <strong> Missouri Historical Society</strong>
       </v-card-actions>
     </v-card>
   </v-footer>
