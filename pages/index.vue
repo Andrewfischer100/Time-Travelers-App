@@ -3,8 +3,8 @@
     <v-flex xs12 sm10 offset-sm1>
       <v-card class="elevation-0" >
         <v-carousel hide-delimiters class="elevation-7">
-        <nuxt-link 
-            :to="'/institutions/' + item.id" 
+        <nuxt-link
+            :to="'/institutions/' + item.id"
             v-for="(item,i) in items"
             :key="i">
           <v-carousel-item
@@ -15,7 +15,7 @@
             <img :src="item.Image_Thumb[0]" :aspect-ratio="16/9" width="90px">
           </v-responsive>
           -->
-        </nuxt-link> 
+        </nuxt-link>
         </v-carousel>
         <v-card-title class="title font-weight-black">WHAT IS TIME TRAVELERS?</v-card-title>
         <v-card-text>
@@ -62,24 +62,57 @@
           </div>
         </section>
 
-        
+
     </v-flex>
   </v-layout>
 </template>
 
 <script>
+  import 'isomorphic-fetch'
   export default {
     data () {
       return {
         items: [
           {
-            src: '/museum-exterior-crop.jpg'
-          },
-          {
-            src: 'http://images.mohistory.org/loris/webimages/files/tt/3186.jpg/full/full/0/default.jpg',
-            id: 1216
+            src: '/museum-exterior-crop.jpg',
+            id: 1219
           }
-        ]
+        ],
+        data: {}
+      }
+    },
+    created: function () {
+      this.getPoints()
+    },
+    methods: {
+      filterByFeatured: function (bigList) {
+        let smallList = []
+        for (let i = 0; i < bigList.length; i++) {
+          if (bigList[i].Featured) {
+            let entry = {}
+            entry.src = bigList[i].Image_Full[0]
+            entry.id = bigList[i].id
+            smallList.push(entry)
+          }
+        }
+        return smallList
+      },
+      getPoints: function () {
+        let path = 'http://csv.mohistory.org/json/institutions'
+        let self = this
+        fetch(path)
+          .then(function (response) {
+            return response.json()
+          })
+          .then(function (myJson) {
+            self.data = self.filterByFeatured(myJson.data)
+            console.log(self.data)
+            self.items = self.items.concat(self.data)
+            console.log(self.items)
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
       }
     }
   }
@@ -92,7 +125,7 @@
 }
 .pointer {cursor: pointer;}
 
-material-icons:hover { 
+material-icons:hover {
     background-color: yellow;
 }
 .v-carousel {

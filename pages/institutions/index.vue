@@ -33,7 +33,6 @@
             :zoom="zoom"
             map-type-id="terrain"
             style="height: 300px "
-            :options="mapStyle"
           >
             <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
               <h4><nuxt-link :to="'/institutions/' + infoContent.id">{{infoContent.Title}}</nuxt-link></h4>
@@ -71,7 +70,7 @@
               :key="item.id"
               @click=""
               wrap
-            
+
             >
               <nuxt-link :to="'/institutions/' + item.id">
               <v-responsive v-if="item.Image_Thumb[0]">
