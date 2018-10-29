@@ -27,7 +27,7 @@
         </v-card-actions>
       </v-card>
 
-      <!-- 
+      <!--
         <section class="container">
           <div>
             <social-sharing url="http://timetravelers.mohistory.org/"
@@ -82,16 +82,7 @@
             id: 1219
           }
         ],
-        name: 'jim',
         data: {}
-      }
-    },
-    head () {
-      return {
-        title: `Page 1 (${this.name}-side)`,
-        meta: [
-          { hid: 'description', name: 'description', content: 'Page 1 description' }
-        ]
       }
     },
     created: function () {

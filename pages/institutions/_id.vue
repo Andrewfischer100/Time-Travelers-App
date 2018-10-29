@@ -186,7 +186,6 @@
     data () {
       return {
         id: this.$route.params.id,
-        title: 'Member Institution',
         data: {
           Featured: '',
           Phone: '',
@@ -224,13 +223,25 @@
     created: function () {
       this.getPoints()
       console.log(this.data)
-      this.title = this.data[this.$route.params.id]
     },
     head () {
       return {
-        title: this.title,
+        title: this.data.Title,
         meta: [
-          { hid: 'description', name: 'description', content: 'Page 1 description' }
+          { name: 'description', hid: 'description', content: this.data.Body },
+          // Open Graph
+          { name: 'og:title', content: this.data.Title },
+          { name: 'og:description', content: this.data.Body },
+          { name: 'og:type', content: 'website' },
+          { name: 'og:url', content: 'https://timetravelers.mohistory.org/institutions/' + this.data.id },
+          { name: 'og:image', content: this.data.Image_Thumb[0] },
+          // Twitter Card
+          { name: 'twitter:card', content: 'summary' },
+          { name: 'twitter:site', content: 'https://timetravelers.mohistory.org' },
+          { name: 'twitter:title', content: this.data.Title },
+          { name: 'twitter:description', content: this.data.Body },
+          { name: 'twitter:image', content: this.data.Image_Thumb[0] },
+          { name: 'twitter:image:alt', content: 'https://images.mohistory.org/IIIF/webimages/files/tt/time-travelers-large.jpg/full/200%2C/0/default.jpg' }
         ]
       }
     },
