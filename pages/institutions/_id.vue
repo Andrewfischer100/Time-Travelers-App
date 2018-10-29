@@ -31,7 +31,7 @@
           </v-carousel>
             <v-spacer></v-spacer>
             <v-card-title class="black--text text-xs-center">
-              <div class="title font-weight-black"><a :href="data.URL">{{data.Title}}</a></div>
+              <div class="title font-weight-black">{{data.Title}}</div>
             </v-card-title>
 
           </v-layout>
@@ -58,7 +58,24 @@
 
           </v-list-tile>
 
-          <!--<v-divider inset></v-divider>
+          
+
+          <v-divider inset></v-divider>
+
+          <v-list-tile @click="">
+            <v-list-tile-action>
+              <v-icon color="black">web</v-icon>
+            </v-list-tile-action>
+
+            <v-list-tile-content>
+              <v-list-tile-title>Website</v-list-tile-title>
+              <v-list-tile-sub-title><a :href= "data.URL">{{data.URL}}</a></v-list-tile-sub-title>
+
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+
+        <!--<v-divider inset></v-divider>
 
           <v-list-tile @click="">
             <v-list-tile-action>
@@ -102,6 +119,9 @@
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
+
+        <v-divider inset></v-divider>
+
         
           <GmapMap
             :center="data.position"
@@ -118,9 +138,8 @@
           </GmapMap>
           <section class="container">
           <div>
-            <social-sharing url="http://timetravelers.mohistory.org/"
-                      title="Time Travelers | Membership network for historical museums, sites, and societies throughout the United States"
-                      description="The Missouri Historical Society created the program in 1998 so that members of historical institutions could receive exclusive benefits and privileges at museums and historical sites nationwide. Currently, the Time Travelers program includes over 300 organizations in more than 40 states across the country. "
+            <social-sharing :url="'http://gephardt-staging.mohistory.org/institutions/'+data.id"
+                      :title="data.Title"
                       quote="Your passport to a variety of Membership Benefits at Historic Sites Across the U.S"
                       hashtags="timetravelers,missourihistorymuseum,mohistory"
                       twitter-user="mohistorymuseum"

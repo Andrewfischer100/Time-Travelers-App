@@ -26,6 +26,8 @@
           <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>
+
+      <!-- 
         <section class="container">
           <div>
             <social-sharing url="http://timetravelers.mohistory.org/"
@@ -61,6 +63,8 @@
             </social-sharing>
           </div>
         </section>
+
+        -->
 
 
     </v-flex>
