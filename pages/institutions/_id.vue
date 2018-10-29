@@ -102,7 +102,7 @@
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
-        
+
           <GmapMap
             :center="data.position"
             :zoom="7"
@@ -167,6 +167,7 @@
     data () {
       return {
         id: this.$route.params.id,
+        title: 'Member Institution',
         data: {
           Featured: '',
           Phone: '',
@@ -204,6 +205,15 @@
     created: function () {
       this.getPoints()
       console.log(this.data)
+      this.title = this.data[this.$route.params.id]
+    },
+    head () {
+      return {
+        title: this.title,
+        meta: [
+          { hid: 'description', name: 'description', content: 'Page 1 description' }
+        ]
+      }
     },
     methods: {
       getPoints: function () {

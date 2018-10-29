@@ -107,6 +107,7 @@
     data () {
       return {
         data: {},
+        title: 'List of Member Institutions | Time Travelers',
         fullData: {},
         zoom: 4,
         icon: {url: '/location.png'},
@@ -368,6 +369,14 @@
               }
             ]
         }
+      }
+    },
+    head () {
+      return {
+        title: this.title,
+        meta: [
+          { hid: 'description', name: 'description', content: 'Page 1 description' }
+        ]
       }
     },
     watch: {
