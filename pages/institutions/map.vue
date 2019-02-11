@@ -1,7 +1,7 @@
 <template>
   <v-layout row>
     <v-flex xs12 sm10 offset-sm1>
-    
+
   <v-card max-width="1000px">
   <v-toolbar
           dark
@@ -56,7 +56,7 @@
               :icon.sync="icon"
             />
           </GmapMap>
-        
+
         <v-container
           id="scroll-target"
           style="max-height: 300px"
@@ -80,7 +80,7 @@
                     @click=""
                     :to="'/institutions/' + item.id"
                     wrap
-                  
+
                   >
                   <div>
                   <v-responsive v-if="item.Image_Thumb[0]">
@@ -423,7 +423,7 @@
         this.zoom = 5
       },
       getPoints: function () {
-        let path = 'http://csv.mohistory.org/json/institutions'
+        let path = 'https://csv.mohistory.org/json/institutions'
         let self = this
         fetch(path)
           .then(function (response) {

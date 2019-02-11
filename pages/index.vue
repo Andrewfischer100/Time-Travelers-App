@@ -102,7 +102,7 @@
         return smallList
       },
       getPoints: function () {
-        let path = 'http://csv.mohistory.org/json/institutions'
+        let path = 'https://csv.mohistory.org/json/institutions'
         let self = this
         fetch(path)
           .then(function (response) {

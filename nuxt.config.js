@@ -65,7 +65,7 @@ module.exports = {
   /*
   generate: {
     routes: function (callback) {
-      axios.get('http://csv.mohistory.org/json/institutions')
+      axios.get('https://csv.mohistory.org/json/institutions')
         .then((res) => {
           console.log(res)
           var routes = res.data.id((institution) => {
@@ -79,7 +79,7 @@ module.exports = {
   */
   generate: {
     routes: function (callback) {
-      axios.get('http://csv.mohistory.org/json/institutions')
+      axios.get('https://csv.mohistory.org/json/institutions')
         .then((res) => {
           var routes = res.data.data.map((place) => {
             return '/institutions/' + place.id
